@@ -1,18 +1,25 @@
 import time
 
+def convert_count(timer):
+    minute = 0
+    seconds = 0
+    while timer >= 60:
+        minute += 1
+        timer -= 60
+    seconds = timer
+    print(minute, ":", seconds)
+    while minute > 0:
+        minute = count(minute, seconds)
+        seconds = 59
+    for i in range(seconds, 0, -1):
+        print(minute, ":", i)
+        time.sleep(1)
+    print("time up!")
+def count(minute,seconds):
+    for i in range(seconds, 0, -1):
+        print(minute, ":", i)
+        time.sleep(1)
+    return minute-1
 
-def time_convert(seconds):
-    minutes = seconds // 60
-    seconds = seconds % 60
-    hours = minutes // 60
-    minutes = minutes % 60
-    print("time lapsed={0}:{1}:{2}".format(int(hours), int(minutes), seconds))
-
-
-input("press enter to start")
-start_time = time.time()
-input("press enter to stop")
-end_time = time.time()
-
-time_lapsed = end_time - start_time
-time_convert(time_lapsed)
+timer=int(input("enter the time in seconds"))
+convert_count(timer)
